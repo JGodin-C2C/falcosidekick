@@ -192,6 +192,9 @@ func init() {
 			config.Loki.HostPort = ""
 		} else {
 			outputs.EnabledOutputs = append(outputs.EnabledOutputs, "Loki")
+			if config.Loki.Tenant != "" {
+				lokiClient.AddHeader("X-Scope-OrgID", config.Loki.Tenant)
+			}
 		}
 	}
 
