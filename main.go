@@ -193,6 +193,8 @@ func init() {
 		} else {
 			outputs.EnabledOutputs = append(outputs.EnabledOutputs, "Loki")
 			if config.Loki.Tenant != "" {
+				fmt.Print("Adding header")
+				fmt.Print(config.loki.Tenant)
 				lokiClient.AddHeader("X-Scope-OrgID", config.Loki.Tenant)
 			}
 		}
